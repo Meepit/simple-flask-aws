@@ -1,0 +1,20 @@
+<html>
+  <body>
+    <h1>Hello World!</h1>
+
+    {% for filename in my_bucket.objects.all() %}
+      <a href="https://s3-us-west-2.amazonaws.com/playing-with-flask-aws/{{ filename.key }}">
+        <img src="https://s3-us-west-2.amazonaws.com/playing-with-flask-aws/{{ filename.key }}" style="width: 100px; height: 100px">
+      </a>
+    {% endfor %}
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        Select image to upload:
+        <br>
+        <input type="file" name="img">
+        <br>
+        <input type="submit" value="Upload Image" name="submit">
+    </form>
+
+  </body>
+</html>
